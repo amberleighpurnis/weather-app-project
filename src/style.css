@@ -1,0 +1,96 @@
+body {
+  background-image: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);
+}
+h2 {
+  text-align: center;
+  font-size: 25px;
+  background-color: lightblue;
+}
+h3 {
+  font-size: 12px;
+  text-align: center;
+  padding-top: 40px;
+}
+p {
+  margin-bottom: 0px;
+}
+p.description {
+  font-size: 12px;
+  text-transform: capitalize;
+}
+a {
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+}
+button.btn {
+  margin: 5px;
+}
+.card {
+  background-image: linear-gradient(60deg, #abecd6 100%, #fbed96 100%);
+  margin: 20px 125px auto;
+  padding: 20px 0 auto;
+  padding-bottom: 20px;
+  max-width: 100%;
+  min-width: 600px;
+}
+.city {
+  text-transform: capitalize;
+}
+.containter-flex {
+  max-width: 100%;
+  min-width: 400px;
+  margin: 0 auto;
+}
+.degrees {
+  font-size: 15px;
+}
+.description {
+  font-size: 10px;
+  height: 50px;
+}
+.descriptionMain {
+  font-size: 10px;
+  height: 10px;
+}
+.feelsLike {
+  font-size: 11px;
+  color: #929292;
+}
+.five-day-forecast {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.icon {
+  font-size: 30px;
+}
+.links {
+  position: relative;
+  top: -25px;
+}
+.main-city {
+  padding-top: 50px;
+  padding-left: 16px;
+}
+.main-degree {
+  padding-left: 15px;
+}
+.main-icon {
+  font-size: 40px;
+  padding-left: 25px;
+}
+.mainTemp {
+  font-size: 45px;
+}
+.navbar {
+  background: lightblue;
+  margin-top: 0px;
+  width: 100%;
+  margin-right: 0px;
+}
+.suns {
+  text-align: right;
+}
