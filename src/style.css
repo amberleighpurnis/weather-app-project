@@ -13,6 +13,7 @@ h3 {
 }
 p {
   margin-bottom: 0px;
+  font-size: 13px;
 }
 p.description {
   font-size: 12px;
@@ -43,15 +44,20 @@ button.btn {
   min-width: 400px;
   margin: 0 auto;
 }
+.currentdate {
+  font-size: 12px;
+}
 .degrees {
   font-size: 15px;
 }
 .description {
+  text-transform: capitalize;
   font-size: 10px;
   height: 50px;
 }
 .descriptionMain {
-  font-size: 10px;
+  text-transform: capitalize;
+  font-size: 12px;
   height: 10px;
 }
 .feelsLike {

@@ -5,11 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weather App</title>
-  <link rel="stylesheet" href="src/style.css" />
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
   <script src="https://kit.fontawesome.com/edf60f9af7.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="src/style.css" />
 </head>
 
 <body>
@@ -35,7 +36,7 @@
           <div class="col-12">
             <div class="main-city">
               <span class="city" id="city-searched"></span>
-              <p><span id="current-date"></span>
+              <p>Last updated: <span id="current-date"></span>
                 <br />
               <p class=descriptionMain id="main-description"></p>
               </p>
@@ -54,10 +55,10 @@
           </div>
 
           <div class="col-3">
-            <div class="suns">
-              Humidity: <span id="humidity"></span> %
+            <div class="suns"><p>
+              Humidity: <span id="humidity"></span>%</p>
               <p>
-                Wind Speed: <span id="wind"> </span> km/h
+                Wind: <span id="wind"> </span> km/h
               </p>
             </div>
           </div>

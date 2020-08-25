@@ -1,16 +1,25 @@
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let day = date.getDay();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  return `${day} ${hours}:${minutes}`;
+}
+
 function defaultCity(response) {
   let yourCity = response.data.name;
   let header = document.querySelector("#city-searched");
-  header.innerHTML = yourCity;
-  let currentTemp = Math.round(response.data.main.temp);
-  let temp = document.querySelector("#main-temp");
-  temp.innerHTML = currentTemp;
-  let wind = Math.round(response.data.wind.speed);
+  let descriptionElement = document.querySelector("#main-description");
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = `${wind}`;
-  let humidity = Math.round(response.data.main.humidity);
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `${humidity}`;
+  let dateElement = document.querySelector("#current-date");
+
+  header.innerHTML = yourCity;
+  temp.innerHTML = Math.round(response.data.main.temp);
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  humidityElement.innerHTML = Math.round(response.data.main.humidity);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function search(event) {
