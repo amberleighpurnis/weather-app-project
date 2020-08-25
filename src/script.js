@@ -22,7 +22,6 @@ function formatDate(timestamp) {
 }
 
 function defaultCity(response) {
-  console.log(response);
   let yourCity = response.data.name;
   let header = document.querySelector("#city-searched");
   let tempElement = document.querySelector("#main-temp");
@@ -75,7 +74,9 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let iconElement = document.querySelector("#icon");
 
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cTemp = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(cTemp);
   feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
   descriptionElement.innerHTML = response.data.weather[0].description;
   windElement.innerHTML = Math.round(response.data.wind.speed);
@@ -123,6 +124,27 @@ function currentDate(date) {
   dateDisplay = `${day} ${hour}:${minute}`;
   return dateDisplay;
 }
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temp");
+  let fTemp = (cTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fTemp);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temp");
+  temperatureElement.innerHTML = Math.round(cTemp);
+}
+let cTemp = null;
+
+let fTemp = document.querySelector("#fTemp");
+fTemp.addEventListener("click", displayFahrenheitTemperature);
+
+let cTempLink = document.querySelector("#cTemp");
+cTempLink.addEventListener("click", displayCelsiusTemperature);
+
 let dateDisplay = document.querySelector("#current-date");
 dateDisplay.innerHTML = currentDate();
 searchCity("Toronto");
