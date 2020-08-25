@@ -1,25 +1,49 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let day = date.getDay();
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  return `${day} ${hours}:${minutes}`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minute = date.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+  return `${day} ${hour}:${minute}`;
 }
 
 function defaultCity(response) {
+  console.log(response);
   let yourCity = response.data.name;
   let header = document.querySelector("#city-searched");
+  let tempElement = document.querySelector("#main-temp");
   let descriptionElement = document.querySelector("#main-description");
   let windElement = document.querySelector("#wind");
   let humidityElement = document.querySelector("#humidity");
   let dateElement = document.querySelector("#current-date");
+  let iconElement = document.querySelector("#icon");
+  let feelsLikeElement = document.querySelector("#main-feels-like");
 
   header.innerHTML = yourCity;
-  temp.innerHTML = Math.round(response.data.main.temp);
+  tempElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   humidityElement.innerHTML = Math.round(response.data.main.humidity);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function search(event) {
@@ -49,12 +73,17 @@ function showTemperature(response) {
   let descriptionElement = document.querySelector("#main-description");
   let windElement = document.querySelector("#wind");
   let humidityElement = document.querySelector("#humidity");
+  let iconElement = document.querySelector("#icon");
 
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
   descriptionElement.innerHTML = response.data.weather[0].description;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   humidityElement.innerHTML = Math.round(response.data.main.humidity);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 function currentLocation(position) {
   let lat = position.coords.latitude;
@@ -96,5 +125,5 @@ function currentDate(date) {
 }
 let dateDisplay = document.querySelector("#current-date");
 dateDisplay.innerHTML = currentDate();
-
+searchCity("Toronto");
 myCurrentLocation();

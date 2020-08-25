@@ -47,6 +47,10 @@ button.btn {
 .currentdate {
   font-size: 12px;
 }
+.conditions {
+  text-align: left;
+  margin-top: 15px;
+}
 .degrees {
   font-size: 15px;
 }
@@ -63,6 +67,11 @@ button.btn {
 .feelsLike {
   font-size: 11px;
   color: #929292;
+}
+.feelsLikeMain {
+  font-size: 11px;
+  color: #929292;
+  margin-left: -34px;
 }
 .five-day-forecast {
   display: block;
@@ -86,17 +95,17 @@ button.btn {
 }
 .main-icon {
   font-size: 40px;
-  padding-left: 25px;
+  padding-left: 20px;
+  margin-left: -24px;
+  margin-top: -14px;
 }
 .mainTemp {
   font-size: 45px;
+  margin-left: -33px;
 }
 .navbar {
   background: lightblue;
   margin-top: 0px;
   width: 100%;
   margin-right: 0px;
-}
-.suns {
-  text-align: right;
 }
