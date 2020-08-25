@@ -44,25 +44,17 @@ function searchCity(city) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#main-temp");
-  temperatureElement.innerHTML = `${temperature}`;
-
-  let feelsLike = Math.round(response.data.main.feels_like);
   let feelsLikeElement = document.querySelector("#main-feels-like");
-  feelsLikeElement.innerHTML = `${feelsLike}`;
-
-  let description = response.data.weather[0].description;
   let descriptionElement = document.querySelector("#main-description");
-  descriptionElement.innerHTML = `${description}`;
-
-  let wind = Math.round(response.data.wind.speed);
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = `${wind}`;
-
-  let humidity = Math.round(response.data.main.humidity);
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `${humidity}`;
+
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  humidityElement.innerHTML = Math.round(response.data.main.humidity);
 }
 function currentLocation(position) {
   let lat = position.coords.latitude;
