@@ -10,6 +10,12 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
+
+  return `${day} ${formatHours(timestamp)}`;
+}
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
   let hour = date.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -18,7 +24,7 @@ function formatDate(timestamp) {
   if (minute < 10) {
     minute = `0${minute}`;
   }
-  return `${day} ${hour}:${minute}`;
+  return `${hour}:${minute}`;
 }
 
 function defaultCity(response) {
@@ -60,11 +66,41 @@ function search(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+   <div class="col-2">
+   <h3 id="hour-forecast">${formatHours(forecast.dt * 1000)}</h3>
+    <img src="http://openweathermap.org/img/wn/${
+      forecast.weather[0].icon
+    }@2x.png"
+    id= "forecast-icon"/>
+    <div id="forecast-description">${forecast.weather[0].description}</div>
+    <div id="forecast-degrees"><strong id="max-temp">${Math.round(
+      forecast.main.temp_max
+    )}</strong>º <span id="min-temp">${Math.round(
+      forecast.main.temp_min
+    )}</span>º</div>
+    <div class ="forecast-feels-like" id="forecast-feels-like">feels like <span id="forecast-feels-like-temp">${Math.round(
+      forecast.main.feels_like
+    )}</span>º</div>
+  </div>`;
+  }
+}
+
 function searchCity(city) {
   let apiKey = "6140482334c764ca7fa9951280c40d98";
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#main-temp");
@@ -147,5 +183,4 @@ cTempLink.addEventListener("click", displayCelsiusTemperature);
 
 let dateDisplay = document.querySelector("#current-date");
 dateDisplay.innerHTML = currentDate();
-searchCity("Toronto");
 myCurrentLocation();
