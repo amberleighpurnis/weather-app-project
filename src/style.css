@@ -9,12 +9,9 @@ h2 {
 h3 {
   font-size: 12px;
   text-align: center;
-  padding-top: 40px;
+  padding-top: 20px;
 }
-h3 {
-  font-size: 12px;
-  text-align: center;
-}
+
 p {
   margin-bottom: 0px;
   font-size: 13px;
@@ -66,6 +63,12 @@ button.btn {
   color: #929292;
   margin-left: -34px;
 }
+.forecast-description {
+  height: 38px;
+}
+.forecast-description:first-letter {
+  text-transform: capitalize;
+}
 .forecast-icon img {
   display: block;
   margin: 0;
@@ -74,10 +77,15 @@ button.btn {
 .forecast-feels-like {
   font-size: 11.5px;
   color: #929292;
+  width: 71px;
 }
 .container {
   text-align: center;
   font-size: 12px;
+}
+.hour-forecast h3 {
+  font-size: 12px;
+  text-align: center;
 }
 .hour-forecast-display {
   display: block;

@@ -75,18 +75,16 @@ function displayForecast(response) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
    <div class="col-2">
-   <h3 id="hour-forecast">${formatHours(forecast.dt * 1000)}</h3>
+   <h3 class="hour-forecast">${formatHours(forecast.dt * 1000)}</h3>
     <img src="http://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png"
-    id= "forecast-icon"/>
-    <div id="forecast-description">${forecast.weather[0].description}</div>
-    <div id="forecast-degrees"><strong id="max-temp">${Math.round(
+    class= "forecast-icon"/>
+    <div class="forecast-description">${forecast.weather[0].description}</div>
+    <div class="forecast-degrees"><strong>${Math.round(
       forecast.main.temp_max
-    )}</strong>º <span id="min-temp">${Math.round(
-      forecast.main.temp_min
-    )}</span>º</div>
-    <div class ="forecast-feels-like" id="forecast-feels-like">feels like <span id="forecast-feels-like-temp">${Math.round(
+    )}</strong>º <span>${Math.round(forecast.main.temp_min)}</span>º</div>
+    <div class ="forecast-feels-like">feels like <span id="forecast-feels-like-temp">${Math.round(
       forecast.main.feels_like
     )}</span>º</div>
   </div>`;
