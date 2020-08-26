@@ -37,6 +37,7 @@ function defaultCity(response) {
   let dateElement = document.querySelector("#current-date");
   let iconElement = document.querySelector("#icon");
   let feelsLikeElement = document.querySelector("#main-feels-like");
+  let forecastElement = document.querySelector("#forecast");
 
   header.innerHTML = yourCity;
   tempElement.innerHTML = Math.round(response.data.main.temp);
@@ -49,6 +50,7 @@ function defaultCity(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  forecastElement = displayForecast(response);
 }
 
 function search(event) {
@@ -181,4 +183,5 @@ cTempLink.addEventListener("click", displayCelsiusTemperature);
 
 let dateDisplay = document.querySelector("#current-date");
 dateDisplay.innerHTML = currentDate();
-myCurrentLocation();
+
+searchCity("Toronto");

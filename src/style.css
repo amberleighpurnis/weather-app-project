@@ -76,8 +76,8 @@ button.btn {
 }
 .forecast-feels-like {
   font-size: 11.5px;
+  text-align: center;
   color: #929292;
-  width: 71px;
 }
 .container {
   text-align: center;
