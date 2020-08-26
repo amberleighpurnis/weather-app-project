@@ -27,7 +27,7 @@ function formatHours(timestamp) {
   return `${hour}:${minute}`;
 }
 
-function defaultCity(response) {
+function CurrentCity(response) {
   let yourCity = response.data.name;
   let header = document.querySelector("#city-searched");
   let tempElement = document.querySelector("#main-temp");
@@ -127,7 +127,7 @@ function currentLocation(position) {
   let lon = position.coords.longitude;
   let apiKey = "6140482334c764ca7fa9951280c40d98";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(defaultCity);
+  axios.get(apiUrl).then(CurrentCity);
 }
 function myCurrentLocation() {
   navigator.geolocation.getCurrentPosition(currentLocation);
@@ -185,3 +185,4 @@ let dateDisplay = document.querySelector("#current-date");
 dateDisplay.innerHTML = currentDate();
 
 searchCity("Toronto");
+myCurrentLocation();
