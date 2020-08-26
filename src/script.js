@@ -27,7 +27,7 @@ function formatHours(timestamp) {
   return `${hour}:${minute}`;
 }
 
-function CurrentCity(response) {
+function defaultCity(response) {
   let yourCity = response.data.name;
   let header = document.querySelector("#city-searched");
   let tempElement = document.querySelector("#main-temp");
@@ -127,7 +127,7 @@ function currentLocation(position) {
   let lon = position.coords.longitude;
   let apiKey = "6140482334c764ca7fa9951280c40d98";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(CurrentCity);
+  axios.get(apiUrl).then(defaultCity);
 }
 function myCurrentLocation() {
   navigator.geolocation.getCurrentPosition(currentLocation);
