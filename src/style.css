@@ -7,7 +7,7 @@ h2 {
   background-color: lightblue;
 }
 h3 {
-  font-size: 12px;
+  font-size: 15px;
   text-align: center;
   padding-top: 20px;
 }
@@ -39,6 +39,8 @@ button.btn {
 }
 .city {
   text-transform: capitalize;
+  font-size: 30px;
+  font-weight: bold;
 }
 .containter-flex {
   max-width: 100%;
@@ -48,7 +50,9 @@ button.btn {
 .currentdate {
   font-size: 12px;
 }
-.conditions {
+.conditions p {
+  line-height: 5px;
+  font-size: 15px;
   text-align: left;
   margin-top: 15px;
 }
@@ -84,7 +88,7 @@ button.btn {
   font-size: 12px;
 }
 .hour-forecast h3 {
-  font-size: 12px;
+  font-size: 15px;
   text-align: center;
 }
 .hour-forecast-display {

@@ -51,7 +51,9 @@ function displayForecast(response) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
    <div class="col-2">
-   <h3 class="hour-forecast">${formatHours(forecast.dt * 1000)}</h3>
+   <h3 class="hour-forecast"><strong>${formatHours(
+     forecast.dt * 1000
+   )}</strong></h3>
     <img src="http://openweathermap.org/img/wn/${
       forecast.weather[0].icon
     }@2x.png"
@@ -84,10 +86,14 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let iconElement = document.querySelector("#icon");
   let cityElement = document.querySelector("#city-searched");
+  let sunriseElement = document.querySelector("#sunrise");
+  let sunsetElement = document.querySelector("#sunset");
 
   cTemp = response.data.main.temp;
 
   cityElement.innerHTML = response.data.name;
+  sunriseElement.innerHTML = `${formatHours(response.data.sys.sunrise * 1000)}`;
+  sunsetElement.innerHTML = `${formatHours(response.data.sys.sunset * 1000)}`;
   temperatureElement.innerHTML = Math.round(cTemp);
   feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
   descriptionElement.innerHTML = response.data.weather[0].description;
