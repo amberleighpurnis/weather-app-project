@@ -27,32 +27,6 @@ function formatHours(timestamp) {
   return `${hour}:${minute}`;
 }
 
-function defaultCity(response) {
-  let yourCity = response.data.name;
-  let header = document.querySelector("#city-searched");
-  let tempElement = document.querySelector("#main-temp");
-  let descriptionElement = document.querySelector("#main-description");
-  let windElement = document.querySelector("#wind");
-  let humidityElement = document.querySelector("#humidity");
-  let dateElement = document.querySelector("#current-date");
-  let iconElement = document.querySelector("#icon");
-  let feelsLikeElement = document.querySelector("#main-feels-like");
-  let forecastElement = document.querySelector("#forecast");
-
-  header.innerHTML = yourCity;
-  tempElement.innerHTML = Math.round(response.data.main.temp);
-  descriptionElement.innerHTML = response.data.weather[0].description;
-  windElement.innerHTML = Math.round(response.data.wind.speed);
-  humidityElement.innerHTML = Math.round(response.data.main.humidity);
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
-  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  forecastElement = displayForecast(response);
-}
-
 function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-text-input");
@@ -109,9 +83,11 @@ function showTemperature(response) {
   let windElement = document.querySelector("#wind");
   let humidityElement = document.querySelector("#humidity");
   let iconElement = document.querySelector("#icon");
+  let cityElement = document.querySelector("#city-searched");
 
   cTemp = response.data.main.temp;
 
+  cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(cTemp);
   feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -127,7 +103,10 @@ function currentLocation(position) {
   let lon = position.coords.longitude;
   let apiKey = "6140482334c764ca7fa9951280c40d98";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(defaultCity);
+  axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 function myCurrentLocation() {
   navigator.geolocation.getCurrentPosition(currentLocation);
@@ -185,4 +164,3 @@ let dateDisplay = document.querySelector("#current-date");
 dateDisplay.innerHTML = currentDate();
 
 searchCity("Toronto");
-myCurrentLocation();
